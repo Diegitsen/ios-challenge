@@ -37,8 +37,9 @@ class TabBarController: UITabBarController {
     
     func doBuildViewControllers() -> [UIViewController] {
         let listNavController = doBuildListNavigationController()
+        let favoritesNavController = doBuildFavoritesNavigationController()
         let settingsNavController = doBuildSettingsNavigationController()
-        return [listNavController, settingsNavController]
+        return [listNavController, favoritesNavController, settingsNavController]
     }
     
     private func doBuildListNavigationController() -> UINavigationController {
@@ -53,6 +54,13 @@ class TabBarController: UITabBarController {
         let settingsTabBarItem = UITabBarItem(title: "Actuaciones", image:  UIImage(systemName: "map"), tag: 1)
         settingsNavigationController.tabBarItem = settingsTabBarItem
         return settingsNavigationController
+    }
+    
+    private func doBuildFavoritesNavigationController() -> UINavigationController {
+        let favoritesNavigationController = FavoritesViewController().embedInUINavigationController()
+        let favsTabBarItem = UITabBarItem(title: "Favoritos", image:  UIImage(systemName: "heart"), tag: 1)
+        favoritesNavigationController.tabBarItem = favsTabBarItem
+        return favoritesNavigationController
     }
  
 }

@@ -42,8 +42,10 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
             return cell
         }
         let property = properties[indexPath.row]
+        let isFavorite = viewModel.favorites.filter({ $0.id == property.id }).count > 0
         cell.selectionStyle = .none
-        cell.setupCell(property: property)
+        cell.delegate = self
+        cell.setupCell(property: property, isFavorite: isFavorite)
         return cell
     }
     
@@ -60,3 +62,10 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
+extension ListViewController: PropertyCellDelegate {
+    func setPropertyInFavorite(property: PropertyEntity, isFavorite: Bool) {
+        Task {
+            await viewModel.setFavorite(property:property, isFavorite: isFavorite)
+        }
+    }
+}

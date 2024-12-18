@@ -89,7 +89,11 @@ class CarouselView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
 
     // MARK: - UIScrollViewDelegate
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let currentPage = Int(scrollView.contentOffset.x / scrollView.frame.width)
-        pageControl.currentPage = currentPage
+        if (scrollView.frame.width > 0) {
+            let currentPage = Int(scrollView.contentOffset.x / scrollView.frame.width)
+            pageControl.currentPage = currentPage
+        } else {
+            pageControl.currentPage = 0
+        }
     }
 }

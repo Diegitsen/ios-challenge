@@ -14,6 +14,15 @@
 		1E62E2F12D121433003D10EB /* CarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E62E2F02D121433003D10EB /* CarouselView.swift */; };
 		1E62E2F32D121471003D10EB /* CarouselImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E62E2F22D121471003D10EB /* CarouselImageCell.swift */; };
 		1E62E2F52D1219B6003D10EB /* ListViewControllerTableViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E62E2F42D1219B6003D10EB /* ListViewControllerTableViewHelper.swift */; };
+		1E7281B82D1227D90004396E /* PropertyDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E7281B72D1227D90004396E /* PropertyDetailViewModel.swift */; };
+		1E7281BA2D12284F0004396E /* CloudPropertyDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E7281B92D12284F0004396E /* CloudPropertyDetail.swift */; };
+		1E7281BC2D123AA90004396E /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E7281BB2D123AA90004396E /* FavoritesViewController.swift */; };
+		1E7281BE2D1240020004396E /* FavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E7281BD2D1240020004396E /* FavoritesViewModel.swift */; };
+		1E7281C02D136E770004396E /* Favorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E7281BF2D136E770004396E /* Favorite.swift */; };
+		1E7281C32D13706A0004396E /* FavoriteLocalDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E7281C22D13706A0004396E /* FavoriteLocalDatasource.swift */; };
+		1E7281C52D1371BB0004396E /* FavoriteRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E7281C42D1371BB0004396E /* FavoriteRepository.swift */; };
+		1E7281C72D1373E70004396E /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E7281C62D1373E70004396E /* DateExtensions.swift */; };
+		1E7281C92D1391EE0004396E /* FavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E7281C82D1391EE0004396E /* FavoriteCell.swift */; };
 		1E8FA5302D0C6BD000C02D5E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FA52F2D0C6BD000C02D5E /* AppDelegate.swift */; };
 		1E8FA5322D0C6BD000C02D5E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FA5312D0C6BD000C02D5E /* SceneDelegate.swift */; };
 		1E8FA5342D0C6BD000C02D5E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FA5332D0C6BD000C02D5E /* ViewController.swift */; };
@@ -70,6 +79,15 @@
 		1E62E2F02D121433003D10EB /* CarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselView.swift; sourceTree = "<group>"; };
 		1E62E2F22D121471003D10EB /* CarouselImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselImageCell.swift; sourceTree = "<group>"; };
 		1E62E2F42D1219B6003D10EB /* ListViewControllerTableViewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewControllerTableViewHelper.swift; sourceTree = "<group>"; };
+		1E7281B72D1227D90004396E /* PropertyDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyDetailViewModel.swift; sourceTree = "<group>"; };
+		1E7281B92D12284F0004396E /* CloudPropertyDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudPropertyDetail.swift; sourceTree = "<group>"; };
+		1E7281BB2D123AA90004396E /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FavoritesViewController.swift; path = idealistaChallenge/data/model/cloud/FavoritesViewController.swift; sourceTree = SOURCE_ROOT; };
+		1E7281BD2D1240020004396E /* FavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FavoritesViewModel.swift; path = idealistaChallenge/data/model/cloud/FavoritesViewModel.swift; sourceTree = SOURCE_ROOT; };
+		1E7281BF2D136E770004396E /* Favorite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favorite.swift; sourceTree = "<group>"; };
+		1E7281C22D13706A0004396E /* FavoriteLocalDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteLocalDatasource.swift; sourceTree = "<group>"; };
+		1E7281C42D1371BB0004396E /* FavoriteRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteRepository.swift; sourceTree = "<group>"; };
+		1E7281C62D1373E70004396E /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
+		1E7281C82D1391EE0004396E /* FavoriteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FavoriteCell.swift; path = idealistaChallenge/utils/extensions/FavoriteCell.swift; sourceTree = SOURCE_ROOT; };
 		1E8FA52C2D0C6BD000C02D5E /* idealistaChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = idealistaChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E8FA52F2D0C6BD000C02D5E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1E8FA5312D0C6BD000C02D5E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -136,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				1E62E2EC2D12132D003D10EB /* PropertyDetailViewController.swift */,
+				1E7281B72D1227D90004396E /* PropertyDetailViewModel.swift */,
 			);
 			path = propertyDetail;
 			sourceTree = "<group>";
@@ -155,6 +174,14 @@
 				1E62E2F22D121471003D10EB /* CarouselImageCell.swift */,
 			);
 			path = carousel;
+			sourceTree = "<group>";
+		};
+		1E7281C12D1370560004396E /* favorite */ = {
+			isa = PBXGroup;
+			children = (
+				1E7281C22D13706A0004396E /* FavoriteLocalDatasource.swift */,
+			);
+			path = favorite;
 			sourceTree = "<group>";
 		};
 		1E8FA5232D0C6BD000C02D5E = {
@@ -255,6 +282,7 @@
 		1E8FA56F2D0F49A900C02D5E /* datasource */ = {
 			isa = PBXGroup;
 			children = (
+				1E7281C12D1370560004396E /* favorite */,
 				1E9AF7482D0F7ECB00CC7EAF /* property */,
 			);
 			path = datasource;
@@ -264,6 +292,7 @@
 			isa = PBXGroup;
 			children = (
 				1E9AF7462D0F7E6900CC7EAF /* PropertyRepository.swift */,
+				1E7281C42D1371BB0004396E /* FavoriteRepository.swift */,
 			);
 			path = repository;
 			sourceTree = "<group>";
@@ -282,6 +311,7 @@
 			children = (
 				1E9AF74C2D0FB30600CC7EAF /* Property.swift */,
 				1E9AF74E2D0FB43F00CC7EAF /* PropertyPicture.swift */,
+				1E7281BF2D136E770004396E /* Favorite.swift */,
 			);
 			path = entity;
 			sourceTree = "<group>";
@@ -290,6 +320,7 @@
 			isa = PBXGroup;
 			children = (
 				1E9AF7422D0F783900CC7EAF /* CloudProperty.swift */,
+				1E7281B92D12284F0004396E /* CloudPropertyDetail.swift */,
 			);
 			path = cloud;
 			sourceTree = "<group>";
@@ -340,6 +371,9 @@
 		1E8FA59F2D0F4CFE00C02D5E /* favorites */ = {
 			isa = PBXGroup;
 			children = (
+				1E7281BB2D123AA90004396E /* FavoritesViewController.swift */,
+				1E7281BD2D1240020004396E /* FavoritesViewModel.swift */,
+				1E7281C82D1391EE0004396E /* FavoriteCell.swift */,
 			);
 			path = favorites;
 			sourceTree = "<group>";
@@ -367,6 +401,7 @@
 				1E8FA5AD2D0F523600C02D5E /* UIViewControllerExtensions.swift */,
 				1E62E2E52D0FC954003D10EB /* SequenceExtensions.swift */,
 				1E62E2E92D0FD37A003D10EB /* UIImageViewExtensions.swift */,
+				1E7281C62D1373E70004396E /* DateExtensions.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -511,9 +546,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E7281C92D1391EE0004396E /* FavoriteCell.swift in Sources */,
 				1E62E2F32D121471003D10EB /* CarouselImageCell.swift in Sources */,
 				1E8FA5342D0C6BD000C02D5E /* ViewController.swift in Sources */,
 				1E8FA5AE2D0F523600C02D5E /* UIViewControllerExtensions.swift in Sources */,
+				1E7281BA2D12284F0004396E /* CloudPropertyDetail.swift in Sources */,
+				1E7281C52D1371BB0004396E /* FavoriteRepository.swift in Sources */,
 				1E9AF74D2D0FB30700CC7EAF /* Property.swift in Sources */,
 				1E8FA5AA2D0F4F3300C02D5E /* UIViewExtensions.swift in Sources */,
 				1E62E2E62D0FC954003D10EB /* SequenceExtensions.swift in Sources */,
@@ -525,19 +563,25 @@
 				1E8FA57E2D0F4C8800C02D5E /* PersistenceManager.swift in Sources */,
 				1E8FA5302D0C6BD000C02D5E /* AppDelegate.swift in Sources */,
 				1E62E2E82D0FCC8D003D10EB /* PropertyCell.swift in Sources */,
+				1E7281C02D136E770004396E /* Favorite.swift in Sources */,
 				1E8FA5AC2D0F515200C02D5E /* SettingsViewController.swift in Sources */,
 				1E62E2ED2D12132D003D10EB /* PropertyDetailViewController.swift in Sources */,
+				1E7281C32D13706A0004396E /* FavoriteLocalDatasource.swift in Sources */,
 				1E9AF7512D0FB73A00CC7EAF /* PropertyLocalDatasource.swift in Sources */,
 				1E8FA5672D0F47A700C02D5E /* Json.swift in Sources */,
 				1E8FA5782D0F4C7800C02D5E /* Observable.swift in Sources */,
 				1E8FA5322D0C6BD000C02D5E /* SceneDelegate.swift in Sources */,
 				1E62E2F12D121433003D10EB /* CarouselView.swift in Sources */,
+				1E7281C72D1373E70004396E /* DateExtensions.swift in Sources */,
 				1E8FA5A32D0F4D9000C02D5E /* TabBarController.swift in Sources */,
 				1E9AF7432D0F783900CC7EAF /* CloudProperty.swift in Sources */,
+				1E7281BE2D1240020004396E /* FavoritesViewModel.swift in Sources */,
 				1E8FA5652D0F478700C02D5E /* HTTPSRequestManager.swift in Sources */,
 				1E9AF7472D0F7E6900CC7EAF /* PropertyRepository.swift in Sources */,
 				1E9AF7452D0F7C5D00CC7EAF /* PropertyRemoteDatasource.swift in Sources */,
 				1E8FA5A52D0F4E0B00C02D5E /* ListViewController.swift in Sources */,
+				1E7281BC2D123AA90004396E /* FavoritesViewController.swift in Sources */,
+				1E7281B82D1227D90004396E /* PropertyDetailViewModel.swift in Sources */,
 				1E9AF74F2D0FB43F00CC7EAF /* PropertyPicture.swift in Sources */,
 				1E8FA5692D0F47CB00C02D5E /* IdealistaApi.swift in Sources */,
 				1E9AF74B2D0FB0A400CC7EAF /* idealistaChallenge.xcdatamodeld in Sources */,

@@ -33,6 +33,24 @@ class PropertyRemoteDatasource {
         }
     }
     
+    func getDetailOfProperty(onRemoteDataCallback: (PropertyDetailServiceResponse) -> Void) async {
+        do {
+            
+            let url = try IdealistaAPIEndpoint.getDetailOfProperty.fetchRequestURL()
+            let fetchedData = try await HTTPSRequestManager.shared.fetchSingle(url: url)
+            
+            let cloudPropertyDetail = CloudPropertyDetail(json: fetchedData)
+           
+            let propertyDetailServiceResponse = PropertyDetailServiceResponse(
+                isSuccessful: true,
+                errorCode: nil,
+                propertyDetail: cloudPropertyDetail)
+            onRemoteDataCallback(propertyDetailServiceResponse)
+        } catch {
+            print("ERROR: \(error.localizedDescription)")
+        }
+    }
+    
 
 }
 
@@ -40,4 +58,10 @@ struct PropertyServiceResponse: Equatable {
     let isSuccessful: Bool
     let errorCode: Int?
     let listOfProperties: [PropertyEntity]?
+}
+
+struct PropertyDetailServiceResponse: Equatable {
+    let isSuccessful: Bool
+    let errorCode: Int?
+    let propertyDetail: CloudPropertyDetail
 }
