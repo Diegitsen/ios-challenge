@@ -236,14 +236,14 @@ class PropertyCell: UITableViewCell {
             addressLabel.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: 14),
             addressLabel.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -14),
             
-            neighborhoodLabel.topAnchor.constraint(equalTo: addressLabel.bottomAnchor, constant: 10),
+            neighborhoodLabel.topAnchor.constraint(equalTo: addressLabel.bottomAnchor, constant: 6),
             neighborhoodLabel.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: 14),
             neighborhoodLabel.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -14),
             
             infoStackView.topAnchor.constraint(equalTo: neighborhoodLabel.bottomAnchor, constant: 4),
             infoStackView.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: 14),
             
-            descriptionButton.topAnchor.constraint(equalTo: infoStackView.bottomAnchor, constant: 10),
+            descriptionButton.topAnchor.constraint(equalTo: infoStackView.bottomAnchor, constant: 12),
             descriptionButton.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: 14),
             descriptionButton.heightAnchor.constraint(equalToConstant: 36),
             descriptionButton.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -20),
@@ -314,7 +314,6 @@ class PropertyCell: UITableViewCell {
     
     // MARK: - Interaction handling
     @objc func favoriteButtonSelected() {
-        print("hey! fav butoon")
         var isFavorite = false
         if (favButton.currentImage == UIImage(systemName: "heart.fill")) {
             favButton.setImage(UIImage(systemName: "heart"), for: .normal)

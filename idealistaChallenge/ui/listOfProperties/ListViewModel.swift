@@ -23,7 +23,6 @@ class ListViewModel {
             favorites = favoritesRepository.getFavorites()
             propertiesNotFiltered = propertiesData
             properties.value = propertiesData
-            print("hey! AAAAA favorites: \(favorites.count)")
         })
     }
     

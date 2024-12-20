@@ -15,7 +15,6 @@ class PropertyDetailViewModel {
     func getDetailOfProperty() async {
         await propertyRepository.getDetailOfProperty(onRepositoryDataCallback: { propertyDetailServiceResponse in
             propertyDetail.value = propertyDetailServiceResponse.propertyDetail
-            print("hey! AAAAA \(propertyDetailServiceResponse.propertyDetail .ubication.longitude)")
         })
     }
     

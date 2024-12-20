@@ -69,6 +69,7 @@ class PropertyDetailViewController: UIViewController, MainProtocol {
         let button = UIButton()
         button.setImage(UIImage(systemName: "heart"), for: .normal)
         button.tintColor = .red
+        button.isHidden = true
         button.translatesAutoresizingMaskIntoConstraints = false
         
         var config = UIButton.Configuration.plain()
@@ -196,8 +197,8 @@ class PropertyDetailViewController: UIViewController, MainProtocol {
         containerView.addSubview(favButton)
         containerView.addSubview(typeLabel)
         containerView.addSubview(priceLabel)
-        containerView.addSubview(addressLabel)
-        containerView.addSubview(neighborhoodLabel)
+//        containerView.addSubview(addressLabel)
+//        containerView.addSubview(neighborhoodLabel)
         containerView.addSubview(infoStackView)
         containerView.addSubview(mapView)
         containerView.addSubview(descriptionLabel)
@@ -259,18 +260,18 @@ class PropertyDetailViewController: UIViewController, MainProtocol {
             priceLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20),
             priceLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20),
             
-            addressLabel.topAnchor.constraint(equalTo: priceLabel.bottomAnchor, constant: 6),
-            addressLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 14),
-            addressLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -14),
+//            addressLabel.topAnchor.constraint(equalTo: priceLabel.bottomAnchor, constant: 6),
+//            addressLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 14),
+//            addressLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -14),
+//
+//            neighborhoodLabel.topAnchor.constraint(equalTo: addressLabel.bottomAnchor, constant: 10),
+//            neighborhoodLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 14),
+//            neighborhoodLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -14),
             
-            neighborhoodLabel.topAnchor.constraint(equalTo: addressLabel.bottomAnchor, constant: 10),
-            neighborhoodLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 14),
-            neighborhoodLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -14),
-            
-            infoStackView.topAnchor.constraint(equalTo: neighborhoodLabel.bottomAnchor, constant: 4),
+            infoStackView.topAnchor.constraint(equalTo: priceLabel.bottomAnchor, constant: 10),
             infoStackView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20),
             
-            mapView.topAnchor.constraint(equalTo: infoStackView.bottomAnchor, constant: 16),
+            mapView.topAnchor.constraint(equalTo: infoStackView.bottomAnchor, constant: 20),
             mapView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20),
             mapView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20),
             mapView.heightAnchor.constraint(equalToConstant: 200),
