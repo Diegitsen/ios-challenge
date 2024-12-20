@@ -44,21 +44,21 @@ class TabBarController: UITabBarController {
     
     private func doBuildListNavigationController() -> UINavigationController {
         let listNavigationController = ListViewController().embedInUINavigationController()
-        let listTabBarItem = UITabBarItem(title: "Lista", image: UIImage(systemName: "map"), tag: 0)
+        let listTabBarItem = UITabBarItem(title: "Lista".localize(), image: UIImage(systemName: "list.dash"), tag: 0)
         listNavigationController.tabBarItem = listTabBarItem
         return listNavigationController
     }
     
     private func doBuildSettingsNavigationController() -> UINavigationController {
         let settingsNavigationController = SettingsViewController().embedInUINavigationController()
-        let settingsTabBarItem = UITabBarItem(title: "Actuaciones", image:  UIImage(systemName: "map"), tag: 1)
+        let settingsTabBarItem = UITabBarItem(title: "Ajustes".localize(), image:  UIImage(systemName: "gear"), tag: 1)
         settingsNavigationController.tabBarItem = settingsTabBarItem
         return settingsNavigationController
     }
     
     private func doBuildFavoritesNavigationController() -> UINavigationController {
         let favoritesNavigationController = FavoritesViewController().embedInUINavigationController()
-        let favsTabBarItem = UITabBarItem(title: "Favoritos", image:  UIImage(systemName: "heart"), tag: 1)
+        let favsTabBarItem = UITabBarItem(title: "Favoritos".localize(), image:  UIImage(systemName: "heart"), tag: 1)
         favoritesNavigationController.tabBarItem = favsTabBarItem
         return favoritesNavigationController
     }
