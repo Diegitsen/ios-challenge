@@ -107,7 +107,6 @@
 		1E8FA5312D0C6BD000C02D5E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		1E8FA5332D0C6BD000C02D5E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		1E8FA5362D0C6BD000C02D5E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		1E8FA5392D0C6BD000C02D5E /* idealistaChallenge.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = idealistaChallenge.xcdatamodel; sourceTree = "<group>"; };
 		1E8FA53B2D0C6BD500C02D5E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1E8FA53E2D0C6BD500C02D5E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1E8FA5402D0C6BD500C02D5E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -208,6 +207,9 @@
 		1E7281D02D13AF400004396E /* assets */ = {
 			isa = PBXGroup;
 			children = (
+				1E8FA53B2D0C6BD500C02D5E /* Assets.xcassets */,
+				1E8FA53D2D0C6BD500C02D5E /* LaunchScreen.storyboard */,
+				1E8FA5352D0C6BD000C02D5E /* Main.storyboard */,
 				1E7281D12D13AF4F0004396E /* Colors.swift */,
 				1ED95A482D14FA9F0059DAE2 /* LocalizableEn.strings */,
 				1ED95A4B2D14FAA50059DAE2 /* LocalizableEs.strings */,
@@ -247,19 +249,15 @@
 			isa = PBXGroup;
 			children = (
 				1E7281D02D13AF400004396E /* assets */,
-				1E8FA5402D0C6BD500C02D5E /* Info.plist */,
 				1E8FA59D2D0F4CE500C02D5E /* ui */,
 				1E8FA5742D0F4C2B00C02D5E /* utils */,
 				1E8FA56E2D0F499C00C02D5E /* data */,
 				1E8FA56A2D0F47E000C02D5E /* configurations */,
 				1E8FA5622D0F476900C02D5E /* service */,
+				1E8FA5402D0C6BD500C02D5E /* Info.plist */,
 				1E8FA52F2D0C6BD000C02D5E /* AppDelegate.swift */,
 				1E8FA5312D0C6BD000C02D5E /* SceneDelegate.swift */,
 				1E8FA5332D0C6BD000C02D5E /* ViewController.swift */,
-				1E8FA5352D0C6BD000C02D5E /* Main.storyboard */,
-				1E8FA53B2D0C6BD500C02D5E /* Assets.xcassets */,
-				1E8FA53D2D0C6BD500C02D5E /* LaunchScreen.storyboard */,
-				1E8FA5382D0C6BD000C02D5E /* idealistaChallenge.xcdatamodeld */,
 			);
 			path = idealistaChallenge;
 			sourceTree = "<group>";
@@ -1015,16 +1013,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		1E8FA5382D0C6BD000C02D5E /* idealistaChallenge.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				1E8FA5392D0C6BD000C02D5E /* idealistaChallenge.xcdatamodel */,
-			);
-			currentVersion = 1E8FA5392D0C6BD000C02D5E /* idealistaChallenge.xcdatamodel */;
-			path = idealistaChallenge.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
 		1E9AF7492D0FB0A400CC7EAF /* idealistaChallenge.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
