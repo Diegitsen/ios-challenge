@@ -173,7 +173,11 @@ class ListViewController: UIViewController, MainProtocol {
         
         return view
     }()
-    
+    let refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.translatesAutoresizingMaskIntoConstraints = false
+        return refreshControl
+    }()
     // MARK: - View Life Cycle
     public override func viewDidLoad() {
         super.viewDidLoad()
@@ -200,6 +204,7 @@ class ListViewController: UIViewController, MainProtocol {
         title = "Lista"
         setupTypeButtonMenu()
         setupPriceButtonMenu()
+        setupRefreshControl()
     }
     
     func setupLayout() {
@@ -246,6 +251,12 @@ class ListViewController: UIViewController, MainProtocol {
             self.listTableView.reloadData()
         }
     }
+    
+    private func setupRefreshControl() {
+           refreshControl.attributedTitle = NSAttributedString(string: "Refrescando :) ...")
+           refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+           listTableView.refreshControl = refreshControl
+       }
     
     func getListOfProperties() {
         Task {
@@ -315,6 +326,13 @@ class ListViewController: UIViewController, MainProtocol {
         typeFilterView.menu = menu
         typeFilterView.showsMenuAsPrimaryAction = true
     }
+    
+    @objc private func refreshData() {
+          DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+              self.getListOfProperties()
+              self.refreshControl.endRefreshing()
+          }
+      }
 
 }
 
