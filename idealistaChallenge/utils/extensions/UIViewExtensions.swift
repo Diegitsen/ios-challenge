@@ -24,7 +24,7 @@ extension UIView {
         
         layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
         layer.shadowRadius = 3
-        layer.cornerRadius = 9
+        layer.cornerRadius = 14
         
         layer.shadowPath = UIBezierPath(roundedRect: bounds, cornerRadius: self.layer.cornerRadius).cgPath
         layer.shouldRasterize = true

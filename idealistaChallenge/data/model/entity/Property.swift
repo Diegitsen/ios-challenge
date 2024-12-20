@@ -43,6 +43,19 @@ class PropertyEntity: NSManagedObject, UniquedObject {
         let items = persistenceManager.mainContext.performAndWait { picturesRaw?.allObjects as? [PropertyPictureEntity] } ?? []
         return items
     }
+    	
+    var propertyType: PropertyType {
+        return PropertyType(rawValue: propertyTypeRaw) ?? .unknown
+    }
+    
+    var operation: PropertyOperation {
+        return PropertyOperation(rawValue: operationRaw) ?? .unknown
+    }
+    
+    var priceInfo: String {
+        return "\(Int(amount)) \(currencySuffix)"
+    }
+    
 }
 
 extension PropertyEntity {

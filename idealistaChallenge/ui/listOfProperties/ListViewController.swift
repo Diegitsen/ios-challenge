@@ -10,6 +10,11 @@ import UIKit
 class ListViewController: UIViewController, MainProtocol {
     
     let viewModel = ListViewModel()
+    var isSortByHighestPrice = false
+    var isSortByLowestPrice = false
+    
+    var isFilteredByRent = false
+    var isFilteredByBuy = false
     
     // MARK: - UI Components
     let containerView: UIView = {
@@ -20,6 +25,7 @@ class ListViewController: UIViewController, MainProtocol {
     }()
     let listTableView: UITableView = {
         let tableView = UITableView()
+        tableView.showsVerticalScrollIndicator = false
         tableView.backgroundColor = .systemBackground
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
@@ -28,7 +34,7 @@ class ListViewController: UIViewController, MainProtocol {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.alignment = .fill
-        stackView.distribution = .fillProportionally
+        stackView.distribution = .fill
         stackView.spacing = 10
         stackView.axis = .horizontal
         return stackView
@@ -59,55 +65,55 @@ class ListViewController: UIViewController, MainProtocol {
         
         return button
     }()
-    let dateFilterView: UIView = {
-        let view = UIView()
+    let priceFilterView: UIButton = {
+        let view = UIButton()
         view.backgroundColor = .systemBackground
         view.layer.cornerRadius = 5
         view.translatesAutoresizingMaskIntoConstraints = false
         
-        let calendarImageView: UIImageView = {
+        let priceImageView: UIImageView = {
             let image = UIImageView()
-            image.image = UIImage(systemName: "calendar")
+            image.image = UIImage(systemName: "tag")
             image.translatesAutoresizingMaskIntoConstraints = false
             return image
         }()
-        let dateLabel: UILabel = {
+        let priceLabel: UILabel = {
             let label = UILabel()
             label.font = .systemFont(ofSize: 14)
-            label.text = "Fecha"
+            label.text = "Precio"
             label.translatesAutoresizingMaskIntoConstraints = false
             return label
         }()
         
-        view.addSubview(calendarImageView)
-        view.addSubview(dateLabel)
+        view.addSubview(priceImageView)
+        view.addSubview(priceLabel)
         
         NSLayoutConstraint.activate([
-            calendarImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8),
-            calendarImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            calendarImageView.heightAnchor.constraint(equalToConstant: 20),
-            calendarImageView.widthAnchor.constraint(equalToConstant: 20),
-            dateLabel.leadingAnchor.constraint(equalTo: calendarImageView.trailingAnchor, constant: 5),
-            dateLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 5),
-            dateLabel.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -5),
-            dateLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -8)
+            priceImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8),
+            priceImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            priceImageView.heightAnchor.constraint(equalToConstant: 20),
+            priceImageView.widthAnchor.constraint(equalToConstant: 20),
+            priceLabel.leadingAnchor.constraint(equalTo: priceImageView.trailingAnchor, constant: 5),
+            priceLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 5),
+            priceLabel.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -5),
+            priceLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -8)
         ])
         
         return view
     }()
-    let typeFilterView: UIView = {
-        let view = UIView()
+    let typeFilterView: UIButton = {
+        let view = UIButton()
         view.backgroundColor = .systemBackground
         view.layer.cornerRadius = 5
         view.translatesAutoresizingMaskIntoConstraints = false
         
-        let calendarImageView: UIImageView = {
+        let typeImageView: UIImageView = {
             let image = UIImageView()
-            image.image = UIImage(systemName: "book.closed")
+            image.image = UIImage(systemName: "list.bullet.clipboard")
             image.translatesAutoresizingMaskIntoConstraints = false
             return image
         }()
-        let dateLabel: UILabel = {
+        let typeLabel: UILabel = {
             let label = UILabel()
             label.font = .systemFont(ofSize: 14)
             label.text = "Tipo"
@@ -115,23 +121,23 @@ class ListViewController: UIViewController, MainProtocol {
             return label
         }()
         
-        view.addSubview(calendarImageView)
-        view.addSubview(dateLabel)
+        view.addSubview(typeImageView)
+        view.addSubview(typeLabel)
         
         NSLayoutConstraint.activate([
-            calendarImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8),
-            calendarImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            calendarImageView.heightAnchor.constraint(equalToConstant: 20),
-            calendarImageView.widthAnchor.constraint(equalToConstant: 20),
-            dateLabel.leadingAnchor.constraint(equalTo: calendarImageView.trailingAnchor, constant: 5),
-            dateLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 5),
-            dateLabel.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -5),
-            dateLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -8)
+            typeImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8),
+            typeImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            typeImageView.heightAnchor.constraint(equalToConstant: 20),
+            typeImageView.widthAnchor.constraint(equalToConstant: 20),
+            typeLabel.leadingAnchor.constraint(equalTo: typeImageView.trailingAnchor, constant: 5),
+            typeLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 5),
+            typeLabel.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -5),
+            typeLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -8)
         ])
         
         return view
     }()
-    let statusFilterView: UIView = {
+    let roomsFilterView: UIView = {
         let view = UIView()
         view.backgroundColor = .systemBackground
         view.layer.cornerRadius = 5
@@ -139,14 +145,14 @@ class ListViewController: UIViewController, MainProtocol {
         
         let calendarImageView: UIImageView = {
             let image = UIImageView()
-            image.image = UIImage(systemName: "pencil")
+            image.image = UIImage(systemName: "bed.double")
             image.translatesAutoresizingMaskIntoConstraints = false
             return image
         }()
         let dateLabel: UILabel = {
             let label = UILabel()
             label.font = .systemFont(ofSize: 14)
-            label.text = "Estado"
+            label.text = "Habitaciones"
             label.translatesAutoresizingMaskIntoConstraints = false
             return label
         }()
@@ -176,36 +182,24 @@ class ListViewController: UIViewController, MainProtocol {
         setupInteractions()
         setupTableView()
         setupViews()
-        setupSortButtonMenu()
         setupObservers()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-//        self.viewModel.performanceServiceResponse.value = nil
-       
         setupData()
     }
     
     override func viewWillLayoutSubviews() {
-        dateFilterView.dropShadow()
+        priceFilterView.dropShadow()
         filterView.dropShadow()
         typeFilterView.dropShadow()
-        statusFilterView.dropShadow()
+        roomsFilterView.dropShadow()
     }
     
     func setupViews() {
         title = "Lista"
-        
-        if let navigationBar = self.navigationController?.navigationBar {
-            let appearance = UINavigationBarAppearance()
-            appearance.configureWithOpaqueBackground()
-//            appearance.backgroundColor = .mainColor
-            appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
-            
-            navigationBar.standardAppearance = appearance
-            navigationBar.scrollEdgeAppearance = navigationBar.standardAppearance
-            navigationBar.tintColor = .white
-        }
+        setupTypeButtonMenu()
+        setupPriceButtonMenu()
     }
     
     func setupLayout() {
@@ -215,9 +209,8 @@ class ListViewController: UIViewController, MainProtocol {
         containerView.addSubview(filterStackView)
         
         filterStackView.addArrangedSubview(filterView)
-        filterStackView.addArrangedSubview(dateFilterView)
+        filterStackView.addArrangedSubview(priceFilterView)
         filterStackView.addArrangedSubview(typeFilterView)
-        filterStackView.addArrangedSubview(statusFilterView)
     }
     
     func setupConstraints() {
@@ -229,6 +222,8 @@ class ListViewController: UIViewController, MainProtocol {
             
             filterStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
             filterStackView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20),
+            priceFilterView.widthAnchor.constraint(equalToConstant: 84),
+            typeFilterView.widthAnchor.constraint(equalToConstant: 74),
             
             listTableView.topAnchor.constraint(equalTo: filterStackView.bottomAnchor, constant: 10),
             listTableView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 10),
@@ -238,17 +233,7 @@ class ListViewController: UIViewController, MainProtocol {
     }
     
     func setupInteractions() {
-        let tapGestureDate = UITapGestureRecognizer(target: self, action: #selector(filterByDate))
-        dateFilterView.isUserInteractionEnabled = true
-        dateFilterView.addGestureRecognizer(tapGestureDate)
         
-        let tapGestureType = UITapGestureRecognizer(target: self, action: #selector(filterByType))
-        typeFilterView.isUserInteractionEnabled = true
-        typeFilterView.addGestureRecognizer(tapGestureType)
-        
-        let tapGestureStatus = UITapGestureRecognizer(target: self, action: #selector(filterByStatus))
-        statusFilterView.isUserInteractionEnabled = true
-        statusFilterView.addGestureRecognizer(tapGestureStatus)
     }
     
     func setupData() {
@@ -257,12 +242,7 @@ class ListViewController: UIViewController, MainProtocol {
 
     
     private func setupObservers() {
-  
         viewModel.properties.observe = { properties in
-            self.dateFilterView.layer.borderWidth = 0
-            self.typeFilterView.layer.borderWidth = 0
-            self.statusFilterView.layer.borderWidth = 0
-            
             self.listTableView.reloadData()
         }
     }
@@ -273,83 +253,71 @@ class ListViewController: UIViewController, MainProtocol {
             await viewModel.getListOfProperties()
         }
     }
-
-    func setupSortButtonMenu() {
-        let children = fetchSortButtonMenuChilder()
-        let menu = UIMenu(children: children)
-        filterView.menu = menu
-        filterView.showsMenuAsPrimaryAction = true
-    }
     
-    private func fetchSortButtonMenuChilder() -> [UIAction] {
-        let sortRecentIcon = true ? UIImage(systemName: "checkmark") : nil
-        let sortOldestIcon = !true ? UIImage(systemName: "checkmark") : nil
+    private func fetchSortPriceButtonMenuChilder() -> [UIAction] {
+        let sortHighestIcon = isSortByHighestPrice ? UIImage(systemName: "checkmark") : nil
+        let sortLowestIcon = isSortByLowestPrice ? UIImage(systemName: "checkmark") : nil
         let children = [
-            UIAction(title: "Más recientes", image: sortRecentIcon, handler: { _ in
-//                self.viewModel.performances.value = nil
-//                self.viewModel.getPerformances(sortOption: SortOption.NEWEST)
-//                self.sortPerformancesByNewest = true
-                self.setupSortButtonMenu()
+            UIAction(title: "Precio más alto", image: sortHighestIcon, handler: { _ in
+                self.isSortByHighestPrice = true
+                self.isSortByLowestPrice = false
+                
+                self.viewModel.properties.value = nil
+                self.viewModel.getListOfProperties(sortOption: SortOption.HighestPrice)
+                self.setupPriceButtonMenu()
             }),
-            UIAction(title: "Más antiguos", image: sortOldestIcon, handler: { _ in
-//                self.viewModel.performances.value = nil
-//                self.viewModel.getPerformances(sortOption: SortOption.OLDEST)
-//                self.sortPerformancesByNewest = false
-                self.setupSortButtonMenu()
+            UIAction(title: "Precio más bajo", image: sortLowestIcon, handler: { _ in
+                self.isSortByHighestPrice = false
+                self.isSortByLowestPrice = true
+                
+                self.viewModel.properties.value = nil
+                self.viewModel.getListOfProperties(sortOption: SortOption.LowestPrice)
+                self.setupPriceButtonMenu()
             })
         ]
         return children
     }
     
- 
+    func setupPriceButtonMenu() {
+        let children = fetchSortPriceButtonMenuChilder()
+        let menu = UIMenu(children: children)
+        priceFilterView.menu = menu
+        priceFilterView.showsMenuAsPrimaryAction = true
+    }
+    
+    private func fetchTypeButtonMenuChilder() -> [UIAction] {
+        let sortRentIcon = isFilteredByRent ? UIImage(systemName: "checkmark") : nil
+        let sortSaleIcon = isFilteredByBuy ? UIImage(systemName: "checkmark") : nil
+        let children = [
+            UIAction(title: "Venta", image: sortSaleIcon, handler: { _ in
+                self.isFilteredByBuy = true
+                self.isFilteredByRent = false
+                
+                self.viewModel.properties.value = nil
+                self.viewModel.getListOfProperties(sortOption: SortOption.FilterBySale)
+                self.setupTypeButtonMenu()
+            }),
+            UIAction(title: "Renta", image: sortRentIcon, handler: { _ in
+                self.isFilteredByBuy = false
+                self.isFilteredByRent = true
+                
+                self.viewModel.properties.value = nil
+                self.viewModel.getListOfProperties(sortOption: SortOption.FilterByRent)
+                self.setupTypeButtonMenu()
+            })
+        ]
+        return children
+    }
+    
+    func setupTypeButtonMenu() {
+        let children = fetchTypeButtonMenuChilder()
+        let menu = UIMenu(children: children)
+        typeFilterView.menu = menu
+        typeFilterView.showsMenuAsPrimaryAction = true
+    }
 
-    @objc func filterByDate() {
-//        if dateFilterView.isSelected() {
-//            dateFilterView.layer.borderWidth = 0
-//            filters.initDate = nil
-//            filters.endDate = nil
-//            viewModel.filterPerformances(filters: filters)
-//        } else {
-//            let dateRangeSheetViewController = DateRangeSheetViewController()
-//            dateRangeSheetViewController.delegate = self
-//            self.present(dateRangeSheetViewController, animated: true)
-//        }
-    }
-    
-    @objc func filterByType() {
-//        if typeFilterView.isSelected() {
-//            typeFilterView.layer.borderWidth = 0
-//            filters.type = nil
-//            viewModel.filterPerformances(filters: filters)
-//        } else {
-//            let filterPerformancesSheetViewController = FilterPerformancesSheetViewController()
-//            filterPerformancesSheetViewController.filterType = .TYPE
-//            filterPerformancesSheetViewController.selectPerformanceTypeCallback = { type in
-//                self.typeFilterView.layer.borderWidth = Constants.VIEW_SELECTED_BORDER_WIDTH
-//                self.typeFilterView.layer.borderColor = UIColor.darkGray.cgColor
-//                self.filters.type = type
-//                self.viewModel.filterPerformances(filters: self.filters)
-//            }
-//            self.present(filterPerformancesSheetViewController, animated: true)
-//        }
-    }
-    
-    @objc func filterByStatus() {
-//        if statusFilterView.isSelected() {
-//            statusFilterView.layer.borderWidth = 0
-//            filters.status = nil
-//            viewModel.filterPerformances(filters: filters)
-//        } else {
-//            let filterPerformancesSheetViewController = FilterPerformancesSheetViewController()
-//            filterPerformancesSheetViewController.filterType = .STATUS
-//            filterPerformancesSheetViewController.selectPerformanceStatusCallback = {
-//                status in
-//                self.statusFilterView.layer.borderWidth = Constants.VIEW_SELECTED_BORDER_WIDTH
-//                self.statusFilterView.layer.borderColor = UIColor.darkGray.cgColor
-//                self.filters.status = status
-//                self.viewModel.filterPerformances(filters: self.filters)
-//            }
-//            self.present(filterPerformancesSheetViewController, animated: true)
-//        }
-    }
+}
+
+enum SortOption {
+    case HighestPrice, LowestPrice, FilterBySale, FilterByRent
 }

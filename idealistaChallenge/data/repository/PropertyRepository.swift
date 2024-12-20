@@ -23,5 +23,9 @@ class PropertyRepository {
             onRepositoryDataCallback(propertyDetailServiceResponse)
         })
     }
+    
+    func getLocalProperties() -> [PropertyEntity] {
+        return localDatasource.getProperties()
+    }
 
 }

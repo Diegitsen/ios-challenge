@@ -63,6 +63,15 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension ListViewController: PropertyCellDelegate {
+    
+    func openDescriptionSheet(property: PropertyEntity) {
+        let descriptionSheet = DescriptionSheetViewController()
+        descriptionSheet.descriptionText = property.info
+        let nav = UINavigationController(rootViewController: descriptionSheet)
+        nav.modalPresentationStyle = .pageSheet
+        self.present(nav, animated: true)
+    }
+    
     func setPropertyInFavorite(property: PropertyEntity, isFavorite: Bool) {
         Task {
             await viewModel.setFavorite(property:property, isFavorite: isFavorite)

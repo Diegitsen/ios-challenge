@@ -39,6 +39,7 @@ class CarouselView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
         collectionView.delegate = self
         collectionView.register(CarouselImageCell.self, forCellWithReuseIdentifier: CarouselImageCell.cellID)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.layer.cornerRadius = 14
         addSubview(collectionView)
     }
 

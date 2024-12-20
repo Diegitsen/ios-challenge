@@ -13,6 +13,7 @@ class ListViewModel {
     let favoritesRepository = FavoriteRepository()
     var properties = Observable<[PropertyEntity]>()
     var favorites: [FavoriteEntity] = []
+    var propertiesNotFiltered: [PropertyEntity] = []
     
     func getListOfProperties() async {
         await propertyRepository.getListOfProperties(onRepositoryDataCallback: { propertyServiceResponse in
@@ -20,13 +21,29 @@ class ListViewModel {
                 return
             }
             favorites = favoritesRepository.getFavorites()
+            propertiesNotFiltered = propertiesData
             properties.value = propertiesData
             print("hey! AAAAA favorites: \(favorites.count)")
         })
     }
     
+    func getListOfProperties(sortOption: SortOption) {
+        var propertiesToProcess = propertiesNotFiltered
+        switch sortOption {
+        case .HighestPrice:
+            propertiesToProcess = propertiesToProcess.sorted(by: { $0.price > $1.price })
+        case .LowestPrice:
+            propertiesToProcess = propertiesToProcess.sorted(by: { $0.price < $1.price })
+        case .FilterByRent:
+            propertiesToProcess = propertiesToProcess.filter({ $0.operation == .rent })
+        case .FilterBySale:
+            propertiesToProcess = propertiesToProcess.filter({ $0.operation == .sale })
+        }
+        properties.value = propertiesToProcess
+    }
+    
     func saveFavorite(property: PropertyEntity) async {
-        let date = Date().toString()
+        let date = Date().toStringDetailed()
         await favoritesRepository.saveFavorite(propertyId: property.id, date: date)
     }
     

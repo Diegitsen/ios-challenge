@@ -11,8 +11,8 @@ struct CloudPropertyDetail: Equatable {
     let id: Int
     let price: Double
     let priceInfo: Price
-    let operation: String
-    let propertyType: String
+    let operationRaw: String
+    let propertyTypeRaw: String
     let extendedPropertyType: String
     let homeType: String
     let state: String
@@ -28,8 +28,8 @@ struct CloudPropertyDetail: Equatable {
         price = json["price"] as? Double ?? 0.0
         let priceJson = json["priceInfo"] as? Json ?? Json()
         priceInfo = Price(json: priceJson)
-        operation = json["operation"] as? String ?? ""
-        propertyType = json["propertyType"] as? String ?? ""
+        operationRaw = json["operation"] as? String ?? ""
+        propertyTypeRaw = json["propertyType"] as? String ?? ""
         extendedPropertyType = json["extendedPropertyType"] as? String ?? ""
         homeType = json["homeType"] as? String ?? ""
         state = json["state"] as? String ?? ""
@@ -43,6 +43,18 @@ struct CloudPropertyDetail: Equatable {
         moreCharacteristics = MoreCharacteristics(json: moreCharacteristicsJson)
         let energyCertificationJson = json["energyCertification"] as? Json ?? Json()
         energyCertification = EnergyCertification(json: energyCertificationJson)
+    }
+    
+    var propertyType: PropertyType {
+        return PropertyType(rawValue: propertyTypeRaw) ?? .unknown
+    }
+
+    var operation: PropertyOperation {
+        return PropertyOperation(rawValue: operationRaw) ?? .unknown
+    }
+    
+    var priceInfoDetail: String {
+        return "\(Int(priceInfo.amount)) \(priceInfo.currencySuffix)"
     }
 }
 
