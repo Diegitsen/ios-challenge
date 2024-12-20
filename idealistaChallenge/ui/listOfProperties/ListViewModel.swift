@@ -30,9 +30,9 @@ class ListViewModel {
         var propertiesToProcess = propertiesNotFiltered
         switch sortOption {
         case .HighestPrice:
-            propertiesToProcess = propertiesToProcess.sorted(by: { $0.price > $1.price })
+            propertiesToProcess = propertiesToProcess.sorted(by: { $0.amount > $1.amount })
         case .LowestPrice:
-            propertiesToProcess = propertiesToProcess.sorted(by: { $0.price < $1.price })
+            propertiesToProcess = propertiesToProcess.sorted(by: { $0.amount < $1.amount })
         case .FilterByRent:
             propertiesToProcess = propertiesToProcess.filter({ $0.operation == .rent })
         case .FilterBySale:
